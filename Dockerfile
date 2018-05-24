@@ -1,15 +1,8 @@
-FROM openjdk
-
-# Install libsodium
-RUN apt-get update && apt-get install -y \
-        build-essential \
-        software-properties-common \
-        unzip
-
-COPY ./install-libsodium.sh .
-RUN ./install-libsodium.sh
+FROM docker.montagu.dide.ic.ac.uk:5000/openjdk-libsodium:master
 
 #Install vault
+RUN apt-get update && apt-get install -y \
+        unzip
 
 COPY ./install-vault.sh .
-RUN ./install-vault
+RUN ./install-vault.sh
